@@ -9,7 +9,7 @@ A minimal Angular starter for Universal JavaScript using TypeScript and Webpack
 
 > If you're looking for the Angular Universal repo go to [**angular/universal**](https://github.com/angular/universal)  
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Getting Started
 
@@ -36,9 +36,23 @@ This repo demonstrates the use of 2 different forms of Server Side Rendering.
 * `npm install` or `yarn`
 
 ### Development (Client-side only rendering)
-* run `npm run start` which will start `ng serve`
+2 terminal tabs (temporarily, it should be merged to one command):
+* run `npm start` which will start `ng serve` and the watch for changes in the Express server at the same time.
+* run `npm run start:server` to start the express server or run the `Launch Server` task in VS Code debugger to debug
 
-### Production (also for testing SSR/Pre-rendering locally)
+Open `http://localhost:4000`
+
+### Development (SSR)
+* run `npm run build:client-and-server-bundles` once to build the browser and server bundles.
+
+2 terminal tabs (temporarily, it should be merged to one command):
+* run `npm run start:ssr` which will recompile the server for each change
+* run `npm run start:server` to start the express server or run the `Launch Server` task in VS Code debugger to debug
+
+### Production without SSR
+**`npm run build && npm run webpack:server && npm run serve:ssr`** - Compiles your application and spins up a Node Express to serve your client-side application on `http://localhost:4000`.
+
+### Production with SSR (also for testing SSR/Pre-rendering locally)
 **`npm run build:ssr && npm run serve:ssr`** - Compiles your application and spins up a Node Express to serve your Universal application on `http://localhost:4000`.
 
 **`npm run build:prerender && npm run serve:prerender`** - Compiles your application and prerenders your applications files, spinning up a demo http-server so you can view it on `http://localhost:8080`
